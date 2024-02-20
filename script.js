@@ -6,9 +6,16 @@ function getComputerChoice() {
 };
 
 function playRound(playerSelection, computerSelection) {
+    const validPlayerSelections = ["rock", "paper", "scissors"];
+    const playerSelectionCleaned = playerSelection.replace(/\s/g, "").toLowerCase();
+
+    if (!validPlayerSelections.includes(playerSelectionCleaned)) {
+        throw new Error ("Please enter a valid selection: Rock, Paper or Scissors");
+    }
+
     let userResult = "";
 
-    //TODO: add function that returns error if user input, even after cleaning, isn't rock, paper or scissors
+    //TODO: console log player and computer selection, and then result
 
     if (playerSelection === "rock") {
         switch(computerSelection) {
