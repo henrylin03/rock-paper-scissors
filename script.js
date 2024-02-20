@@ -55,9 +55,13 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 
-    // object that returns string of userResult
+    const resultStringHashmap = {
+        win: `You win! ${playerSelection} beats ${computerSelection}`,
+        lose: `You lose! ${computerSelection} beats ${playerSelection}`,
+        tie: `You tied! Both you and the computer selected ${computerSelection}`
+    }
 
-    return userResult;
+    return resultStringHashmap[userResult];
 }
 
 const playerSelection = "rock"; //TODO: convert to user input, trim string, remove spaces, lowercase etc
