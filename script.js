@@ -66,8 +66,17 @@ function playRound(playerSelection, computerSelection) {
     return resultStringHashmap[userResult];
 }
 
-const playerSelection = "rock"; //TODO: convert to user input
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function playGame() {
+    for (let i = 1; i <= 5; i++) {
+        console.log(`--ROUND ${i}--`);
+        const playerSelection = prompt("Please enter your choice: Rock, Paper, or Scissors: ");
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    };
+
+    //TODO: TRACK SCORES TO SEE WHO WINS - IT IS BEST OF 3??
+    return;
+}
 
 //TODO: suggest that in playRound, you use console.log _group_ (see notes on most useful console methods) for each round...
+playGame();
