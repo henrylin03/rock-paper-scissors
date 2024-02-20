@@ -13,6 +13,8 @@ function playRound(playerSelection, computerSelection) {
         throw new Error ("Please enter a valid selection: Rock, Paper or Scissors");
     }
 
+    const playerSelectionTitlecased = playerSelectionCleaned.charAt(0).toUpperCase() + playerSelectionCleaned.slice(1);
+
     let userResult = "";
 
     //TODO: console log player and computer selection, and then result
@@ -56,8 +58,8 @@ function playRound(playerSelection, computerSelection) {
     }
 
     const resultStringHashmap = {
-        win: `You win! ${playerSelection} beats ${computerSelection}`,
-        lose: `You lose! ${computerSelection} beats ${playerSelection}`,
+        win: `You win! ${playerSelectionTitlecased} beats ${computerSelection}`,
+        lose: `You lose! ${computerSelection} beats ${playerSelectionTitlecased}`,
         tie: `You tied! Both you and the computer selected ${computerSelection}`
     }
 
