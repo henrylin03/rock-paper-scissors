@@ -22,55 +22,55 @@ function playRound(playerSelection, computerSelection) {
     console.log(`You selected ${playerSelection}...`);
     console.log(`Computer selected ${computerSelection}...`);
 
-    let userResult = "";
+    let playerResult = "";
     if (playerSelection === "Rock") {
         switch (computerSelection) {
             case "Rock":
-                userResult = "tie";
+                playerResult = "tie";
                 break;
             case "Scissors":
-                userResult = "win";
+                playerResult = "win";
                 break;
             case "Paper":
-                userResult = "lose";
+                playerResult = "lose";
                 break;
         }
     } else if (playerSelection === "Paper") {
         switch (computerSelection) {
             case "Rock":
-                userResult = "win";
+                playerResult = "win";
                 break;
             case "Scissors":
-                userResult = "lose";
+                playerResult = "lose";
                 break;
             case "Paper":
-                userResult = "tie";
+                playerResult = "tie";
                 break;
         }
     } else if (playerSelection === "Scissors") {
         switch (computerSelection) {
             case "Rock":
-                userResult = "lose";
+                playerResult = "lose";
                 break;
             case "Scissors":
-                userResult = "tie";
+                playerResult = "tie";
                 break;
             case "Paper":
-                userResult = "win";
+                playerResult = "win";
                 break
         }
     }
 
+    return playerResult;
+}
+
+function playGame() {
     const resultStringHashmap = {
         win: `You win! ${playerSelection} beats ${computerSelection}`,
         lose: `You lose! ${computerSelection} beats ${playerSelection}`,
         tie: `You tied! Both you and the computer selected ${computerSelection}`
     }
 
-    return resultStringHashmap[userResult];
-}
-
-function playGame() {
     let scores = { player: 0, computer: 0 }
 
     for (let i = 1; i <= 5; i++) {
