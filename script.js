@@ -67,6 +67,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
+    let scores = { player: 0, computer: 0 }
+
     for (let i = 1; i <= 5; i++) {
         console.log(`--ROUND ${i}--`);
         const playerSelection = prompt("Please enter your choice: Rock, Paper, or Scissors: ");
@@ -74,7 +76,6 @@ function playGame() {
         console.log(playRound(playerSelection, computerSelection));
     };
 
-    //TODO: TRACK SCORES TO SEE WHO WINS - IT IS BEST OF 3??
     return;
 }
 
