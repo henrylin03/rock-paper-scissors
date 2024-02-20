@@ -5,21 +5,25 @@ function getComputerChoice() {
     return choice;
 };
 
-function playRound(playerSelection, computerSelection) {
-    const validPlayerSelections = ["rock", "paper", "scissors"];
-    const playerSelectionCleaned = playerSelection.replace(/\s/g, "").toLowerCase();
+function getPlayerChoice() {
+    const validChoices = ["rock", "paper", "scissors"];
+    const choice = prompt("Please enter your choice: Rock, Paper, or Scissors: ");
+    const choiceCleaned = choice.replace(/\s/g, "").toLowerCase();
 
-    if (!validPlayerSelections.includes(playerSelectionCleaned)) {
+    if (!validChoices.includes(choiceCleaned)) {
         return "ERROR: Please enter a valid selection: Rock, Paper or Scissors";
-    }
+    };
 
-    const playerSelectionTitlecased = playerSelectionCleaned.charAt(0).toUpperCase() + playerSelectionCleaned.slice(1);
+    const choiceTitleCased = choiceCleaned.charAt(0).toUpperCase() + choiceCleaned.slice(1);
+    return choiceTitleCased;
+}
 
-    console.log(`You selected ${playerSelectionTitlecased}...`);
+function playRound(playerSelection, computerSelection) {
+    console.log(`You selected ${playerSelection}...`);
     console.log(`Computer selected ${computerSelection}...`);
 
     let userResult = "";
-    if (playerSelectionCleaned === "rock") {
+    if (playerSelection === "Rock") {
         switch (computerSelection) {
             case "Rock":
                 userResult = "tie";
@@ -31,7 +35,7 @@ function playRound(playerSelection, computerSelection) {
                 userResult = "lose";
                 break;
         }
-    } else if (playerSelectionCleaned === "paper") {
+    } else if (playerSelection === "Paper") {
         switch (computerSelection) {
             case "Rock":
                 userResult = "win";
@@ -43,7 +47,7 @@ function playRound(playerSelection, computerSelection) {
                 userResult = "tie";
                 break;
         }
-    } else if (playerSelectionCleaned === "scissors") {
+    } else if (playerSelection === "Scissors") {
         switch (computerSelection) {
             case "Rock":
                 userResult = "lose";
@@ -58,8 +62,8 @@ function playRound(playerSelection, computerSelection) {
     }
 
     const resultStringHashmap = {
-        win: `You win! ${playerSelectionTitlecased} beats ${computerSelection}`,
-        lose: `You lose! ${computerSelection} beats ${playerSelectionTitlecased}`,
+        win: `You win! ${playerSelection} beats ${computerSelection}`,
+        lose: `You lose! ${computerSelection} beats ${playerSelection}`,
         tie: `You tied! Both you and the computer selected ${computerSelection}`
     }
 
@@ -71,7 +75,7 @@ function playGame() {
 
     for (let i = 1; i <= 5; i++) {
         console.log(`--ROUND ${i}--`);
-        const playerSelection = prompt("Please enter your choice: Rock, Paper, or Scissors: ");
+        const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
     };
