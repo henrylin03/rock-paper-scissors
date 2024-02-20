@@ -5,4 +5,10 @@ function getComputerChoice() {
     return choice;
 };
 
-console.log(getComputerChoice());
+function playRound(playerSelection, computerSelection) {
+    return "hello";
+}
+
+const playerSelection = "rock"; //TODO: convert to user input
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
