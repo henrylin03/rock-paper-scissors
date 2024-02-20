@@ -78,13 +78,31 @@ function playGame() {
         console.log(`--ROUND ${i}--`);
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
+        playerRoundResult = playRound(playerSelection, computerSelection);
+
+        switch (playerRoundResult) {
+            case "tie":
+                scores.player++;
+                scores.computer++;
+                break;
+            case "win":
+                scores.player++;
+                break;
+            case "lose":
+                scores.computer++;
+                break;
+        };
+        console.log(scores);
     };
 
-    return;
+    const playerFinalResult = (scores.player > scores.computer) ? "You win! 🏆" :
+        (scores.player < scores.computer) ? "You lose ☹️" :
+            "You tied! 🟰"
+
+    return playerFinalResult;
 }
 
 //TODO: suggest that in playRound, you use console.log _group_ (see notes on most useful console methods) for each round...
 //TODO: manage error - when user puts in a random text, it shouldn't just proceed to next round
 
-playGame();
+console.log(playGame());
