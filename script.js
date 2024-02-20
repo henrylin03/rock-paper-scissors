@@ -61,23 +61,24 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 
-    return playerResult;
-}
-
-function playGame() {
     const resultStringHashmap = {
         win: `You win! ${playerSelection} beats ${computerSelection}`,
         lose: `You lose! ${computerSelection} beats ${playerSelection}`,
         tie: `You tied! Both you and the computer selected ${computerSelection}`
     }
+    console.log(resultStringHashmap[playerResult])
 
+    return playerResult;
+}
+
+function playGame() {
     let scores = { player: 0, computer: 0 }
 
     for (let i = 1; i <= 5; i++) {
         console.log(`--ROUND ${i}--`);
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        playRound(playerSelection, computerSelection);
     };
 
     return;
