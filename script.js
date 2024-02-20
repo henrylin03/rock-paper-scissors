@@ -10,7 +10,7 @@ function playRound(playerSelection, computerSelection) {
     const playerSelectionCleaned = playerSelection.replace(/\s/g, "").toLowerCase();
 
     if (!validPlayerSelections.includes(playerSelectionCleaned)) {
-        throw new Error("Please enter a valid selection: Rock, Paper or Scissors");
+        return "ERROR: Please enter a valid selection: Rock, Paper or Scissors";
     }
 
     const playerSelectionTitlecased = playerSelectionCleaned.charAt(0).toUpperCase() + playerSelectionCleaned.slice(1);
@@ -19,7 +19,7 @@ function playRound(playerSelection, computerSelection) {
     console.log(`Computer selected ${computerSelection}...`);
 
     let userResult = "";
-    if (playerSelection === "rock") {
+    if (playerSelectionCleaned === "rock") {
         switch (computerSelection) {
             case "Rock":
                 userResult = "tie";
@@ -31,7 +31,7 @@ function playRound(playerSelection, computerSelection) {
                 userResult = "lose";
                 break;
         }
-    } else if (playerSelection === "paper") {
+    } else if (playerSelectionCleaned === "paper") {
         switch (computerSelection) {
             case "Rock":
                 userResult = "win";
@@ -43,7 +43,7 @@ function playRound(playerSelection, computerSelection) {
                 userResult = "tie";
                 break;
         }
-    } else if (playerSelection === "scissors") {
+    } else if (playerSelectionCleaned === "scissors") {
         switch (computerSelection) {
             case "Rock":
                 userResult = "lose";
@@ -79,4 +79,6 @@ function playGame() {
 }
 
 //TODO: suggest that in playRound, you use console.log _group_ (see notes on most useful console methods) for each round...
+//TODO: manage error - when user puts in a random text, it shouldn't just proceed to next round
+
 playGame();
