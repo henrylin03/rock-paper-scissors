@@ -10,17 +10,17 @@ function playRound(playerSelection, computerSelection) {
     const playerSelectionCleaned = playerSelection.replace(/\s/g, "").toLowerCase();
 
     if (!validPlayerSelections.includes(playerSelectionCleaned)) {
-        throw new Error ("Please enter a valid selection: Rock, Paper or Scissors");
+        throw new Error("Please enter a valid selection: Rock, Paper or Scissors");
     }
 
     const playerSelectionTitlecased = playerSelectionCleaned.charAt(0).toUpperCase() + playerSelectionCleaned.slice(1);
 
     console.log(`You selected ${playerSelectionTitlecased}...`);
-    console.log(`The computer selected ${computerSelection}...`);
+    console.log(`Computer selected ${computerSelection}...`);
 
     let userResult = "";
     if (playerSelection === "rock") {
-        switch(computerSelection) {
+        switch (computerSelection) {
             case "Rock":
                 userResult = "tie";
                 break;
@@ -32,7 +32,7 @@ function playRound(playerSelection, computerSelection) {
                 break;
         }
     } else if (playerSelection === "paper") {
-        switch(computerSelection) {
+        switch (computerSelection) {
             case "Rock":
                 userResult = "win";
                 break;
@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
                 break;
         }
     } else if (playerSelection === "scissors") {
-        switch(computerSelection) {
+        switch (computerSelection) {
             case "Rock":
                 userResult = "lose";
                 break;
@@ -69,3 +69,5 @@ function playRound(playerSelection, computerSelection) {
 const playerSelection = "rock"; //TODO: convert to user input
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
+
+//TODO: suggest that in playRound, you use console.log _group_ (see notes on most useful console methods) for each round...
