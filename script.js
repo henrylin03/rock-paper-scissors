@@ -15,10 +15,10 @@ function playRound(playerSelection, computerSelection) {
 
     const playerSelectionTitlecased = playerSelectionCleaned.charAt(0).toUpperCase() + playerSelectionCleaned.slice(1);
 
+    console.log(`You selected ${playerSelectionTitlecased}...`);
+    console.log(`The computer selected ${computerSelection}...`);
+
     let userResult = "";
-
-    //TODO: console log player and computer selection, and then result
-
     if (playerSelection === "rock") {
         switch(computerSelection) {
             case "Rock":
@@ -66,6 +66,6 @@ function playRound(playerSelection, computerSelection) {
     return resultStringHashmap[userResult];
 }
 
-const playerSelection = "rock"; //TODO: convert to user input, trim string, remove spaces, lowercase etc
+const playerSelection = "rock"; //TODO: convert to user input
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
