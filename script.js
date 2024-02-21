@@ -81,7 +81,7 @@ function playGame() {
     let scores = { player: 0, computer: 0 }
 
     for (let i = 1; i <= 5; i++) {
-        console.log(`--ROUND ${i}--`);
+        console.group(`--ROUND ${i}--`);
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
         playerRoundResult = playRound(playerSelection, computerSelection);
@@ -99,6 +99,7 @@ function playGame() {
                 break;
         };
         console.log(scores);
+        console.groupEnd(`--ROUND ${i}--`);
     };
 
     const playerFinalResult = (scores.player > scores.computer) ? "You win! 🏆" :
@@ -107,7 +108,5 @@ function playGame() {
 
     return playerFinalResult;
 }
-
-//TODO: suggest that in playRound, you use console.log _group_ (see notes on most useful console methods) for each round...
 
 console.log(playGame());
