@@ -8,17 +8,18 @@ function getComputerChoice() {
 function getPlayerChoice() {
     const validChoices = ["rock", "paper", "scissors"];
 
+    let choice = "";
+    let choiceCleaned = "";
     while (true) {
-        const choice = prompt("Please enter your choice: Rock, Paper, or Scissors: ");
-        const choiceCleaned = choice.replace(/\s/g, "").toLowerCase();
-        console.log(choiceCleaned);
+        choice = prompt("Please enter your choice: Rock, Paper, or Scissors: ");
+        choiceCleaned = choice.replace(/\s/g, "").toLowerCase();
 
         if (validChoices.includes(choiceCleaned)) { break };
         if (!choiceCleaned) { continue };
 
         alert("⚠️ ERROR: please enter Rock, Paper, or Scissors.\n\nPlease click OK to continue.");
+        continue;
     };
-
     const choiceTitleCased = choiceCleaned.charAt(0).toUpperCase() + choiceCleaned.slice(1);
     return choiceTitleCased;
 }
@@ -108,6 +109,5 @@ function playGame() {
 }
 
 //TODO: suggest that in playRound, you use console.log _group_ (see notes on most useful console methods) for each round...
-//TODO: manage error - when user puts in a random text, it shouldn't just proceed to next round
 
 console.log(playGame());
