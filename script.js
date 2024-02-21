@@ -7,11 +7,16 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     const validChoices = ["rock", "paper", "scissors"];
-    const choice = prompt("Please enter your choice: Rock, Paper, or Scissors: ");
-    const choiceCleaned = choice.replace(/\s/g, "").toLowerCase();
 
-    if (!validChoices.includes(choiceCleaned)) {
-        return "ERROR: Please enter a valid selection: Rock, Paper or Scissors";
+    while (true) {
+        const choice = prompt("Please enter your choice: Rock, Paper, or Scissors: ");
+        const choiceCleaned = choice.replace(/\s/g, "").toLowerCase();
+        console.log(choiceCleaned);
+
+        if (validChoices.includes(choiceCleaned)) { break };
+        if (!choiceCleaned) { continue };
+
+        alert("⚠️ ERROR: please enter Rock, Paper, or Scissors.\n\nPlease click OK to continue.");
     };
 
     const choiceTitleCased = choiceCleaned.charAt(0).toUpperCase() + choiceCleaned.slice(1);
