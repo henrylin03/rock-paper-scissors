@@ -75,6 +75,8 @@ function handleButtonClick(e) {
     roundDetails.computerSelectionAnnounced = `Computer played ${computerSelection}...`;
     roundDetails.resultsAnnounced = roundResultAnnounced[playerRoundResult];
 
+    const roundsHeading = document.querySelector(".rounds > h2");
+    roundsHeading.removeAttribute("hidden");
     const roundNumber = document.createElement("h3");
     roundNumber.textContent = `Round ${round}`;
 
@@ -107,17 +109,22 @@ function handleButtonClick(e) {
             btn.setAttribute("disabled", true);
         });
 
-        const finalResultsSection = document.querySelector(".result");
-        const finalResultsAnnounced = document.createElement("h3");
-
+        const finalResultsAnnounced = document.querySelector(".final-result-announced");
         finalResultsAnnounced.textContent = scores.player > scores.computer ?
             "Congratulations, you win! 🏆" : "Oh no, you lose! ☹️";
 
-        finalResultsSection.appendChild(finalResultsAnnounced);
+        const playAgainButton = document.querySelector(".play-again");
+        playAgainButton.removeAttribute("hidden");
+
+        // function handlePlayAgainButtonClick() {
+        //     // reset scores
+        //     // make buttons clickable again (rock, paper, scissors)
+        //     // remove all rounds info
+        // };
+
     }
 
     round++;
-
 };
 
 const buttons = document.querySelectorAll(".player-options > button")
