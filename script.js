@@ -61,10 +61,10 @@ function playRound(playerSelection, computerSelection) {
 let round = 1;
 let scores = { player: 0, computer: 0 };
 
-// need to add articles for each round
-
-const buttons = document.querySelectorAll(".player-options > button")
+const roundsSection = document.querySelector(".rounds");
 function handleButtonClick(e) {
+    const roundArticle = document.createElement("article");
+
     const computerSelection = getComputerSelection();
     const playerSelection = e.target.textContent;
     const playerRoundResult = playRound(playerSelection, computerSelection);
@@ -76,8 +76,12 @@ function handleButtonClick(e) {
             scores.computer++;
             break;
     };
-    console.log(scores);
+
+    roundsSection.appendChild(roundArticle);
+
 }
+
+const buttons = document.querySelectorAll(".player-options > button")
 buttons.forEach(btn => {
     btn.addEventListener("click", handleButtonClick);
 })
