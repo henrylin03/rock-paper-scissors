@@ -81,6 +81,7 @@ function handleButtonClick(e) {
     roundNumber.textContent = `Round ${round}`;
 
     const roundArticle = document.createElement("article");
+    roundArticle.appendChild(roundNumber)
     for (const detail in roundDetails) {
         if (detail.includes("Selection")) {
             var roundDetailElement = document.createElement("ul");
@@ -94,7 +95,6 @@ function handleButtonClick(e) {
 
         roundArticle.appendChild(roundDetailElement);
     };
-    roundsSection.appendChild(roundNumber);
     roundsSection.appendChild(roundArticle);
 
     const playerScoreElement = document.querySelector(".player-score");
