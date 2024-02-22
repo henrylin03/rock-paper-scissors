@@ -102,12 +102,27 @@ function handleButtonClick(e) {
     computerScoreElement.textContent = scores.computer;
 
     round++;
-}
+};
 
 const buttons = document.querySelectorAll(".player-options > button")
 buttons.forEach(btn => {
     btn.addEventListener("click", handleButtonClick);
-})
+});
 
-//todo: remove event listener (click) on all of the buttons once the game is over (someone hits 5 points) until user wants to restart or refreshes page
-//todo: end game and announce winner once someone hits 5 points
+if (scores.player === 5 || scores.computer === 5) {
+    buttons.forEach(btn => {
+        btn.removeEventListener("click", handleButtonClick);
+    });
+
+    const finalResultsSection = document.querySelector(".result");
+    const finalResultsAnnounced = document.createElement("h3");
+
+    finalResultsAnnounced.textContent = scores.player > scores.computer ?
+        "Congratulations, you win! 🏆" : "Oh no, you lose! ☹️";
+
+    finalResultsSection.appendChild(finalResultsAnnounced);
+}
+
+//todo: end game and announce winner once someone hits 5 points - USE A MODAL - GIVE PLAYER OPTION TO PLAY AGAIN OR CANCEL (AND SEE RESULTS)
+//TODO: add styling so it isn't so ugly
+//TODO: consider doing reverse chronological order of rounds
