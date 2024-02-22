@@ -50,12 +50,10 @@ let scores = { player: 0, computer: 0 };
 
 const roundsSection = document.querySelector(".rounds");
 function handleButtonClick(e) {
-    let roundDetails = {};
-    roundDetails.computerSelection = getComputerSelection();
-    roundDetails.playerSelection = e.target.textContent;
-
-    const playerRoundResult = playRound(roundDetails.playerSelection,
-        roundDetails.computerSelection);
+    const computerSelection = getComputerSelection();
+    const playerSelection = e.target.textContent;
+    const playerRoundResult = playRound(playerSelection,
+        computerSelection);
     switch (playerRoundResult) {
         case "win":
             scores.player++;
@@ -64,13 +62,18 @@ function handleButtonClick(e) {
             scores.computer++;
             break;
     };
+
     const roundResultAnnounced = {
-        win: `You win! ${roundDetails.playerSelection} beats ${roundDetails.computerSelection}`,
-        lose: `You lose! ${roundDetails.playerSelection} beats ${roundDetails.computerSelection}`,
-        tie: `You tied! Both you and the computer selected ${roundDetails.computerSelection}`
+        win: `You win! ${playerSelection} beats ${computerSelection}`,
+        lose: `You lose! ${playerSelection} beats ${computerSelection}`,
+        tie: `You tied!`
     };
 
-    roundDetails.results = roundResultAnnounced[playerRoundResult];
+
+    let roundDetails = {};
+    roundDetails.playerSelectionAnnounced = `You played ${playerSelection}...`;
+    roundDetails.computerSelectionAnnounced = `Computer played ${computerSelection}...`;
+    roundDetails.resultsAnnounced = roundResultAnnounced[playerRoundResult];
 
     const roundList = document.createElement("ul");
     for (const detail in roundDetails) {
