@@ -94,7 +94,6 @@ function handleButtonClick(e) {
 
         roundArticle.appendChild(roundDetailElement);
     };
-
     roundsSection.appendChild(roundNumber);
     roundsSection.appendChild(roundArticle);
 
@@ -126,6 +125,5 @@ buttons.forEach(btn => {
     btn.addEventListener("click", handleButtonClick);
 });
 
-//todo: end game and announce winner once someone hits 5 points - USE A MODAL - GIVE PLAYER OPTION TO PLAY AGAIN OR CANCEL (AND SEE RESULTS)
 //TODO: add styling so it isn't so ugly
 //TODO: consider doing reverse chronological order of rounds
