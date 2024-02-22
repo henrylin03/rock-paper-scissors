@@ -77,3 +77,8 @@ function playRound(playerSelection, computerSelection) {
     return playerResult;
 }
 
+const playerOptions = document.querySelector(".player-options")
+const playerOptionsButtons = playerOptions.querySelectorAll("button");
+playerOptionsButtons.forEach(btn => {
+    btn.addEventListener("click", () => console.log(btn.textContent));
+})
