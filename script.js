@@ -61,6 +61,7 @@ const buttons = document.querySelectorAll(".player-options > button")
 const handleButtonClick = (e) => {
     const computerSelection = getComputerSelection();
     const playerSelection = e.target.textContent;
+    playRound(playerSelection, computerSelection);
 }
 
 buttons.forEach(btn => {
