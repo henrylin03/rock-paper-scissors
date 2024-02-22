@@ -77,36 +77,3 @@ function playRound(playerSelection, computerSelection) {
     return playerResult;
 }
 
-function playGame() {
-    let scores = { player: 0, computer: 0 }
-
-    for (let i = 1; i <= 5; i++) {
-        console.group(`--ROUND ${i}--`);
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        playerRoundResult = playRound(playerSelection, computerSelection);
-
-        switch (playerRoundResult) {
-            case "tie":
-                scores.player++;
-                scores.computer++;
-                break;
-            case "win":
-                scores.player++;
-                break;
-            case "lose":
-                scores.computer++;
-                break;
-        };
-        console.log(scores);
-        console.groupEnd(`--ROUND ${i}--`);
-    };
-
-    const playerFinalResult = (scores.player > scores.computer) ? "You win! 🏆" :
-        (scores.player < scores.computer) ? "You lose ☹️" :
-            "You tied! 🟰"
-
-    return playerFinalResult;
-}
-
-console.log(playGame());
