@@ -5,10 +5,6 @@ function getComputerSelection() {
 };
 
 function playRound(playerSelection, computerSelection) {
-    //TODO: FOR REMOVAL
-    console.log(`You selected ${playerSelection}...`);
-    console.log(`Computer selected ${computerSelection}...`);
-
     let playerResult = "";
     if (playerSelection === "Rock") {
         switch (computerSelection) {
@@ -47,17 +43,8 @@ function playRound(playerSelection, computerSelection) {
                 break
         }
     }
-
-    const resultStringHashmap = {
-        win: `You win! ${playerSelection} beats ${computerSelection}`,
-        lose: `You lose! ${computerSelection} beats ${playerSelection}`,
-        tie: `You tied! Both you and the computer selected ${computerSelection}`
-    }
-    console.log(resultStringHashmap[playerResult]) //TODO: for removal
-
     return playerResult;
 }
-
 let round = 1;
 let scores = { player: 0, computer: 0 };
 
@@ -76,6 +63,14 @@ function handleButtonClick(e) {
             scores.computer++;
             break;
     };
+
+    const roundResultAnnounced = {
+        win: `You win! ${playerSelection} beats ${computerSelection}`,
+        lose: `You lose! ${computerSelection} beats ${playerSelection}`,
+        tie: `You tied! Both you and the computer selected ${computerSelection}`
+    }
+
+    roundArticle.textContent = `You selected ${playerSelection}...\n\nThe computer selected ${computerSelection}...\n\n${roundResultAnnounced[playerRoundResult]}`
 
     roundsSection.appendChild(roundArticle);
 
