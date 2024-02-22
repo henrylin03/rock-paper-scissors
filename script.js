@@ -115,14 +115,8 @@ function handleButtonClick(e) {
 
         const playAgainButton = document.querySelector(".play-again");
         playAgainButton.removeAttribute("hidden");
-
-        // function handlePlayAgainButtonClick() {
-        //     // reset scores
-        //     // make buttons clickable again (rock, paper, scissors)
-        //     // remove all rounds info
-        // };
-
-    }
+        playAgainButton.addEventListener("click", () => location.reload());
+    };
 
     round++;
 };
