@@ -102,26 +102,28 @@ function handleButtonClick(e) {
     computerScoreElement.textContent = scores.computer;
 
     round++;
+
+    if (scores.player === 5 || scores.computer === 5) {
+        buttons.forEach(btn => {
+            btn.removeEventListener("click", handleButtonClick);
+            btn.setAttribute("disabled", true);
+        });
+
+        const finalResultsSection = document.querySelector(".result");
+        const finalResultsAnnounced = document.createElement("h3");
+
+        finalResultsAnnounced.textContent = scores.player > scores.computer ?
+            "Congratulations, you win! 🏆" : "Oh no, you lose! ☹️";
+
+        finalResultsSection.appendChild(finalResultsAnnounced);
+    }
+
 };
 
 const buttons = document.querySelectorAll(".player-options > button")
 buttons.forEach(btn => {
     btn.addEventListener("click", handleButtonClick);
 });
-
-if (scores.player === 5 || scores.computer === 5) {
-    buttons.forEach(btn => {
-        btn.removeEventListener("click", handleButtonClick);
-    });
-
-    const finalResultsSection = document.querySelector(".result");
-    const finalResultsAnnounced = document.createElement("h3");
-
-    finalResultsAnnounced.textContent = scores.player > scores.computer ?
-        "Congratulations, you win! 🏆" : "Oh no, you lose! ☹️";
-
-    finalResultsSection.appendChild(finalResultsAnnounced);
-}
 
 //todo: end game and announce winner once someone hits 5 points - USE A MODAL - GIVE PLAYER OPTION TO PLAY AGAIN OR CANCEL (AND SEE RESULTS)
 //TODO: add styling so it isn't so ugly
