@@ -5,25 +5,6 @@ function getComputerChoice() {
     return choice;
 };
 
-function getPlayerChoice() {
-    const validChoices = ["rock", "paper", "scissors"];
-
-    let choice = "";
-    let choiceCleaned = "";
-    while (true) {
-        choice = prompt("Please enter your choice: Rock, Paper, or Scissors: ");
-        choiceCleaned = choice.replace(/\s/g, "").toLowerCase();
-
-        if (validChoices.includes(choiceCleaned)) { break };
-        if (!choiceCleaned) { continue };
-
-        alert("⚠️ ERROR: please enter Rock, Paper, or Scissors.\n\nPlease click OK to continue.");
-        continue;
-    };
-    const choiceTitleCased = choiceCleaned.charAt(0).toUpperCase() + choiceCleaned.slice(1);
-    return choiceTitleCased;
-}
-
 function playRound(playerSelection, computerSelection) {
     console.log(`You selected ${playerSelection}...`);
     console.log(`Computer selected ${computerSelection}...`);
@@ -77,8 +58,7 @@ function playRound(playerSelection, computerSelection) {
     return playerResult;
 }
 
-const playerOptions = document.querySelector(".player-options")
-const playerOptionsButtons = playerOptions.querySelectorAll("button");
-playerOptionsButtons.forEach(btn => {
-    btn.addEventListener("click", () => console.log(btn.textContent));
+const buttons = document.querySelectorAll(".player-options > button")
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => console.log(computerSelection, btn.textContent))
 })
