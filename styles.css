@@ -26,3 +26,10 @@ header {
     margin-top: 10px;
     font-size: 150px;
 }
+
+button {
+    padding: 10px 60px;
+    margin: 40px;
+    border-radius: 15px;
+    cursor: pointer;
+}
