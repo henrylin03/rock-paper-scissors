@@ -69,20 +69,27 @@ function handleButtonClick(e) {
         tie: `You tied!`
     };
 
-
     let roundDetails = {};
     roundDetails.playerSelectionAnnounced = `You played ${playerSelection}...`;
     roundDetails.computerSelectionAnnounced = `Computer played ${computerSelection}...`;
     roundDetails.resultsAnnounced = roundResultAnnounced[playerRoundResult];
 
-    const roundList = document.createElement("ul");
+    const roundArticle = document.createElement("article");
     for (const detail in roundDetails) {
-        const roundDetailElement = document.createElement("li")
-        roundDetailElement.textContent = roundDetails[detail];
-        roundList.appendChild(roundDetailElement);
+        if (detail.includes("Selection")) {
+            var roundDetailElement = document.createElement("ul");
+            const roundListItem = document.createElement("li");
+            roundListItem.textContent = roundDetails[detail];
+            roundDetailElement.appendChild(roundListItem);
+        } else {
+            var roundDetailElement = document.createElement("strong");
+            roundDetailElement.textContent = roundDetails[detail];
+        };
+
+        roundArticle.appendChild(roundDetailElement);
     };
 
-    roundsSection.appendChild(roundList);
+    roundsSection.appendChild(roundArticle);
 
 }
 
