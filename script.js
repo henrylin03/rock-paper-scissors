@@ -96,6 +96,11 @@ function handleButtonClick(e) {
     roundsSection.appendChild(roundNumber);
     roundsSection.appendChild(roundArticle);
 
+    const playerScoreElement = document.querySelector(".player-score");
+    const computerScoreElement = document.querySelector(".computer-score");
+    playerScoreElement.textContent = scores.player;
+    computerScoreElement.textContent = scores.computer;
+
     round++;
 }
 
