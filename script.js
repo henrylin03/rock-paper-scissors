@@ -101,8 +101,6 @@ function handleButtonClick(e) {
     playerScoreElement.textContent = scores.player;
     computerScoreElement.textContent = scores.computer;
 
-    round++;
-
     if (scores.player === 5 || scores.computer === 5) {
         buttons.forEach(btn => {
             btn.removeEventListener("click", handleButtonClick);
@@ -117,6 +115,8 @@ function handleButtonClick(e) {
 
         finalResultsSection.appendChild(finalResultsAnnounced);
     }
+
+    round++;
 
 };
 
