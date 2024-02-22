@@ -48,8 +48,6 @@ function playRound(playerSelection, computerSelection) {
 
 let round = 1;
 let scores = { player: 0, computer: 0 };
-
-const roundsSection = document.querySelector(".rounds");
 function handleButtonClick(e) {
     const computerSelection = getComputerSelection();
     const playerSelection = e.target.textContent;
@@ -75,6 +73,7 @@ function handleButtonClick(e) {
     roundDetails.computerSelectionAnnounced = `Computer played ${computerSelection}...`;
     roundDetails.resultsAnnounced = roundResultAnnounced[playerRoundResult];
 
+    const roundsSection = document.querySelector(".rounds");
     const roundsHeading = document.querySelector(".rounds > h2");
     roundsHeading.removeAttribute("hidden");
     const roundNumber = document.createElement("h3");
@@ -95,7 +94,7 @@ function handleButtonClick(e) {
 
         roundArticle.appendChild(roundDetailElement);
     };
-    roundsSection.appendChild(roundArticle);
+    roundsSection.prepend(roundArticle);
 
     const playerScoreElement = document.querySelector(".player-score");
     const computerScoreElement = document.querySelector(".computer-score");
