@@ -74,8 +74,6 @@ function handleButtonClick(e) {
     roundDetails.resultsAnnounced = roundResultAnnounced[playerRoundResult];
 
     const roundsSection = document.querySelector(".rounds");
-    const roundsHeading = document.querySelector(".rounds > h2");
-    roundsHeading.removeAttribute("hidden");
     const roundNumber = document.createElement("h3");
     roundNumber.textContent = `Round ${round}`;
 
