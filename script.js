@@ -69,10 +69,6 @@ function handleButtonClick(e) {
     const playerSelection = e.target.textContent;
     const playerRoundResult = playRound(playerSelection, computerSelection);
     switch (playerRoundResult) {
-        case "tie":
-            scores.player++;
-            scores.computer++;
-            break;
         case "win":
             scores.player++;
             break;
@@ -80,10 +76,11 @@ function handleButtonClick(e) {
             scores.computer++;
             break;
     };
-    alert(scores);
+    console.log(scores);
 }
 buttons.forEach(btn => {
     btn.addEventListener("click", handleButtonClick);
 })
 
 //todo: remove event listener (click) on all of the buttons once the game is over (someone hits 5 points) until user wants to restart or refreshes page
+//todo: end game and announce winner once someone hits 5 points
