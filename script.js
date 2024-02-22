@@ -110,7 +110,7 @@ function handleButtonClick(e) {
 
         const finalResultsAnnounced = document.querySelector(".final-result-announced");
         finalResultsAnnounced.textContent = scores.player > scores.computer ?
-            "Congratulations, you win! 🏆" : "Oh no, you lose! ☹️";
+            "You win! 🏆" : "You lose! ☹️";
 
         const playAgainButton = document.querySelector(".play-again");
         playAgainButton.removeAttribute("hidden");
