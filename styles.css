@@ -8,4 +8,17 @@ body {
     text-align: center;
 }
 
-;
+header {
+    margin: 25px 0;
+}
+
+.scores {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.score-container div {
+    margin-top: 10px;
+    font-size: 150px;
+}
