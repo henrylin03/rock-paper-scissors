@@ -121,6 +121,3 @@ const buttons = document.querySelectorAll(".player-options > button")
 buttons.forEach(btn => {
     btn.addEventListener("click", handleButtonClick);
 });
-
-//TODO: add styling so it isn't so ugly
-//TODO: consider doing reverse chronological order of rounds
