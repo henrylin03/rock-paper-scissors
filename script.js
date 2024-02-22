@@ -1,8 +1,7 @@
-function getComputerChoice() {
-    const choicesArray = ["Rock", "Paper", "Scissors"];
-    const randomIndex = Math.floor(Math.random() * choicesArray.length);
-    const choice = choicesArray[randomIndex];
-    return choice;
+function getComputerSelection() {
+    const selections = ["Rock", "Paper", "Scissors"];
+    const randomIndex = Math.floor(Math.random() * selections.length);
+    return selections[randomIndex];
 };
 
 function playRound(playerSelection, computerSelection) {
@@ -59,6 +58,11 @@ function playRound(playerSelection, computerSelection) {
 }
 
 const buttons = document.querySelectorAll(".player-options > button")
+const handleButtonClick = (e) => {
+    const computerSelection = getComputerSelection();
+    const playerSelection = e.target.textContent;
+}
+
 buttons.forEach(btn => {
-    btn.addEventListener("click", () => console.log(computerSelection, btn.textContent))
+    btn.addEventListener("click", handleButtonClick);
 })
