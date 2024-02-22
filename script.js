@@ -5,6 +5,7 @@ function getComputerSelection() {
 };
 
 function playRound(playerSelection, computerSelection) {
+    //TODO: FOR REMOVAL
     console.log(`You selected ${playerSelection}...`);
     console.log(`Computer selected ${computerSelection}...`);
 
@@ -52,18 +53,37 @@ function playRound(playerSelection, computerSelection) {
         lose: `You lose! ${computerSelection} beats ${playerSelection}`,
         tie: `You tied! Both you and the computer selected ${computerSelection}`
     }
-    console.log(resultStringHashmap[playerResult])
+    console.log(resultStringHashmap[playerResult]) //TODO: for removal
 
     return playerResult;
 }
 
+let round = 1;
+let scores = { player: 0, computer: 0 };
+
+// need to add articles for each round
+
 const buttons = document.querySelectorAll(".player-options > button")
-const handleButtonClick = (e) => {
+function handleButtonClick(e) {
     const computerSelection = getComputerSelection();
     const playerSelection = e.target.textContent;
-    playRound(playerSelection, computerSelection);
+    const playerRoundResult = playRound(playerSelection, computerSelection);
+    switch (playerRoundResult) {
+        case "tie":
+            scores.player++;
+            scores.computer++;
+            break;
+        case "win":
+            scores.player++;
+            break;
+        case "lose":
+            scores.computer++;
+            break;
+    };
+    alert(scores);
 }
-
 buttons.forEach(btn => {
     btn.addEventListener("click", handleButtonClick);
 })
+
+//todo: remove event listener (click) on all of the buttons once the game is over (someone hits 5 points) until user wants to restart or refreshes page
