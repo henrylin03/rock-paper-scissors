@@ -50,11 +50,12 @@ let scores = { player: 0, computer: 0 };
 
 const roundsSection = document.querySelector(".rounds");
 function handleButtonClick(e) {
-    const roundArticle = document.createElement("article");
+    let roundDetails = {};
+    roundDetails.computerSelection = getComputerSelection();
+    roundDetails.playerSelection = e.target.textContent;
 
-    const computerSelection = getComputerSelection();
-    const playerSelection = e.target.textContent;
-    const playerRoundResult = playRound(playerSelection, computerSelection);
+    const playerRoundResult = playRound(roundDetails.playerSelection,
+        roundDetails.computerSelection);
     switch (playerRoundResult) {
         case "win":
             scores.player++;
@@ -63,16 +64,22 @@ function handleButtonClick(e) {
             scores.computer++;
             break;
     };
-
     const roundResultAnnounced = {
-        win: `You win! ${playerSelection} beats ${computerSelection}`,
-        lose: `You lose! ${computerSelection} beats ${playerSelection}`,
-        tie: `You tied! Both you and the computer selected ${computerSelection}`
-    }
+        win: `You win! ${roundDetails.playerSelection} beats ${roundDetails.computerSelection}`,
+        lose: `You lose! ${roundDetails.playerSelection} beats ${roundDetails.computerSelection}`,
+        tie: `You tied! Both you and the computer selected ${roundDetails.computerSelection}`
+    };
 
-    roundArticle.textContent = `You selected ${playerSelection}...\n\nThe computer selected ${computerSelection}...\n\n${roundResultAnnounced[playerRoundResult]}`
+    roundDetails.results = roundResultAnnounced[playerRoundResult];
 
-    roundsSection.appendChild(roundArticle);
+    const roundList = document.createElement("ul");
+    for (const detail in roundDetails) {
+        const roundDetailElement = document.createElement("li")
+        roundDetailElement.textContent = roundDetails[detail];
+        roundList.appendChild(roundDetailElement);
+    };
+
+    roundsSection.appendChild(roundList);
 
 }
 
